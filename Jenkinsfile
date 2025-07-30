@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        MAKE_PATH = "C:\\Program Files (x86)\\GnuWin32\\bin\\make.exe"
+        MAKE_PATH = "C:\\ProgramData\\chocolatey\\bin\\make.exe"
     }
     stages {
         stage('Checkout') {
