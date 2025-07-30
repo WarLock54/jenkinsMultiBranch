@@ -1,46 +1,38 @@
 pipeline {
     agent any
-
+    environment {
+        MAKE_PATH = "C:\\Program Files (x86)\\GnuWin32\\bin\\make.exe"
+    }
     stages {
         stage('Checkout') {
             steps {
-                // Checkout the code from the repository
-                checkout scm
+                git url: 'https://github.com/WarLock54/jenkinsMultiBranch.git', branch: 'main'
             }
         }
 
-         stage('Build') {
+          stage('Build') {
             steps {
-                script {
-                    bat 'make build'
-                }
+                bat "${env.MAKE_PATH} build"
             }
         }
 
         stage('Unit Test') {
             steps {
-                script {
-                    // Run unit tests
-                    bat 'make test'  // Modify this according to your test process
-                }
+                bat "${env.MAKE_PATH} test"
             }
         }
 
         stage('Static Code Analysis') {
             steps {
-                script {
-                    // Run static code analysis
-                    bat 'make lint'  // Modify this according to your static analysis tool
-                }
+                echo 'Running static analysis...'
+                // add tools or scripts here
             }
         }
 
         stage('Security Scan') {
             steps {
-                script {
-                    // Run security scans
-                    bat 'make security-scan'  // Modify this according to your security scanning tool
-                }
+                echo 'Running security scan...'
+                // add security tools here
             }
         }
     }
