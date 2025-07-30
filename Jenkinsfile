@@ -9,11 +9,10 @@ pipeline {
             }
         }
 
-        stage('Build') {
+         stage('Build') {
             steps {
                 script {
-                    // Build the application
-                    sh 'make build'  // Modify this according to your build process
+                    bat 'make build'
                 }
             }
         }
@@ -22,7 +21,7 @@ pipeline {
             steps {
                 script {
                     // Run unit tests
-                    sh 'make test'  // Modify this according to your test process
+                    bat 'make test'  // Modify this according to your test process
                 }
             }
         }
@@ -31,7 +30,7 @@ pipeline {
             steps {
                 script {
                     // Run static code analysis
-                    sh 'make lint'  // Modify this according to your static analysis tool
+                    bat 'make lint'  // Modify this according to your static analysis tool
                 }
             }
         }
@@ -40,7 +39,7 @@ pipeline {
             steps {
                 script {
                     // Run security scans
-                    sh 'make security-scan'  // Modify this according to your security scanning tool
+                    bat 'make security-scan'  // Modify this according to your security scanning tool
                 }
             }
         }
